@@ -34,7 +34,7 @@
   "rewrites": [
     {
       "source": "/api/v1/:path*",
-      "destination": "https://iben-studio-api.onrender.com/api/v1/:path*"
+      "destination": "/api/index"
     }
   ]
 }

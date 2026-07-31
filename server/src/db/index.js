@@ -11,7 +11,7 @@ const path = require('path');
 
 class DatabaseEngine {
   constructor(dbPath) {
-    this.dbPath = dbPath || process.env.DATABASE_PATH || './data/iben-studio.json';
+    this.dbPath = dbPath || process.env.DATABASE_PATH || path.join(__dirname, '..', '..', 'data', 'iben-studio.json');
     this.inMemory = this.dbPath === ':memory:';
     this.data = {
       inquiries: [],
