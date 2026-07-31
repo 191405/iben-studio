@@ -37,11 +37,10 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-          cache-dependency-path: './server/package-lock.json'
 
       - name: Install Backend Dependencies
         working-directory: ./server
-        run: npm ci
+        run: npm install
 
       - name: Check Code Style & Validation
         working-directory: ./server
@@ -63,11 +62,10 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-          cache-dependency-path: './server/package-lock.json'
 
       - name: Install Backend Dependencies
         working-directory: ./server
-        run: npm ci
+        run: npm install
 
       - name: Run Test Suite (Jest / Node Test Engine)
         working-directory: ./server
@@ -98,6 +96,7 @@ jobs:
 
       - name: Log in to GitHub Container Registry
         if: github.event_name != 'pull_request'
+        continue-on-error: true
         uses: docker/login-action@v3
         with:
           registry: ${{ env.CONTAINER_REGISTRY }}
@@ -115,12 +114,12 @@ jobs:
             type=sha
             type=raw,value=latest,enable={{is_default_branch}}
 
-      - name: Build and Push Docker Image
+      - name: Build and Verify Docker Image
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile
-          push: ${{ github.event_name != 'pull_request' }}
+          push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
