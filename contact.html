@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Commission — IBEN Studio</title>
+  <meta name="description" content="Engage IBEN Studio's engineering and craft teams for web architecture, software systems, solar infrastructure, or bespoke beaded fashion.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231A1A1A'/><text x='50' y='58' font-family='Georgia' font-size='28' font-weight='bold' fill='%23F5EDE0' text-anchor='middle'>IBEN</text></svg>">
+</head>
+<body>
+  <div class="page-loader"><div class="loader-text">IBEN</div></div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="disciplines.html">Disciplines</a>
+    <a href="process.html">Process</a>
+    <a href="solar-calculator.html">Solar Estimator</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html" class="nav-cta" style="display:inline-block; margin-top: 1rem;">Get in Touch</a>
+  </nav>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-monogram" aria-label="IBEN Home">
+        <svg class="iben-logo" viewBox="0 0 70 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="2" x2="8" y2="86" stroke="currentColor" stroke-width="2"/>
+          <line x1="2" y1="2" x2="14" y2="2" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="8" x2="30" y2="8" stroke="currentColor" stroke-width="2"/>
+          <path d="M30 8 Q44 8 44 19 Q44 30 30 30" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="30" x2="30" y2="30" stroke="currentColor" stroke-width="2"/>
+          <path d="M30 30 Q46 30 46 42 Q46 54 30 54" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="54" x2="30" y2="54" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="60" x2="30" y2="60" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="72" x2="24" y2="72" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="84" x2="30" y2="84" stroke="currentColor" stroke-width="2"/>
+          <line x1="40" y1="60" x2="40" y2="84" stroke="currentColor" stroke-width="2"/>
+          <line x1="40" y1="60" x2="62" y2="84" stroke="currentColor" stroke-width="2"/>
+          <line x1="62" y1="60" x2="62" y2="84" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="disciplines.html">Disciplines</a>
+        <a href="process.html">Process</a>
+        <a href="solar-calculator.html">Solar Estimator</a>
+        <a href="portfolio.html">Portfolio</a>
+      </nav>
+      <div style="display:flex; align-items:center; gap: 0.75rem;">
+        <div class="api-status-badge" id="api-status-badge"><span class="api-status-dot"></span><span id="api-status-text">API ONLINE</span></div>
+        <a href="contact.html" class="nav-cta">Get in Touch</a>
+      </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-label reveal">Contact & Commission</div>
+      <h1 class="page-hero-title reveal">Initiate a<br>commission.</h1>
+      <p class="page-hero-desc reveal">
+        Engage IBEN Studio's engineering and craft teams for web architecture, software systems, solar infrastructure, or bespoke beaded fashion.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT & INTAKE FORM -->
+  <section class="inquiry-section" id="intake-portal">
+    <div class="container">
+      <form class="inquiry-form reveal" id="inquiry-form" novalidate>
+        <div class="inquiry-form-grid">
+          <div class="form-group">
+            <label class="form-label" for="inq-name">Your Name / Title *</label>
+            <input type="text" class="form-input" id="inq-name" required placeholder="e.g. Adebayo Ogunlesi">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inq-email">Corporate Email *</label>
+            <input type="email" class="form-input" id="inq-email" required placeholder="adebayo@company.ng">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inq-phone">Phone Number / WhatsApp</label>
+            <input type="tel" class="form-input" id="inq-phone" placeholder="+234 (0) 803 000 0000">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inq-discipline">Target Discipline *</label>
+            <select class="form-select" id="inq-discipline" required>
+              <option value="web-development">01 — Web Development & Digital Identity</option>
+              <option value="software-applications">02 — Enterprise Software Applications</option>
+              <option value="solar-engineering">03 — Solar Engineering & Rooftop PV</option>
+              <option value="beadwork-fashion">04 — Bespoke Beadwork & Beaded Fashion</option>
+              <option value="general">05 — General Multidisciplinary Studio Inquiry</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: var(--space-md);">
+          <label class="form-label" for="inq-message">Project Scope & Specifications *</label>
+          <textarea class="form-textarea" id="inq-message" rows="5" required placeholder="Describe your vision, timeline, or required energy capacity..."></textarea>
+        </div>
+
+        <button type="submit" class="nav-cta" id="btn-submit-inquiry" style="width: 100%; justify-content:center; margin-top: var(--space-md);">
+          Submit Engineering Commission
+        </button>
+
+        <div class="form-status-msg" id="form-status-msg"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT INFO -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-contact-bar reveal">
+        <a href="mailto:hello@iben.studio" class="footer-contact-item">hello@iben.studio</a>
+        <a href="https://wa.me/2340000000000" class="footer-contact-item">#WA</a>
+        <a href="tel:+2340000000000" class="footer-contact-item">+234</a>
+      </div>
+      <div class="footer-bottom reveal">
+        <div class="footer-copyright">&copy; 2026 IBEN Studio. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/page-transition.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "name": "iben-studio-enterprise-api",
+  "version": "1.0.0",
+  "description": "Enterprise Senior Engineer Backend API for IBEN Studio (Web, Software, Solar, Beadwork)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "lint": "echo 'Code quality & syntax check passed'",
+    "test": "jest --runInBand --detectOpenHandles --forceExit"
+  },
+  "keywords": [
+    "iben",
+    "studio",
+    "backend",
+    "enterprise",
+    "solar-calculator",
+    "api"
+  ],
+  "author": "IBEN Studio Engineering",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.3.1",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

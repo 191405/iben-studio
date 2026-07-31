@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Sizing & ROI Estimator — IBEN Studio</title>
+  <meta name="description" content="Interactive solar engineering capacity and capital expenditure estimator powered by IBEN Studio's real-time calculation API.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231A1A1A'/><text x='50' y='58' font-family='Georgia' font-size='28' font-weight='bold' fill='%23F5EDE0' text-anchor='middle'>IBEN</text></svg>">
+</head>
+<body>
+  <div class="page-loader"><div class="loader-text">IBEN</div></div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="disciplines.html">Disciplines</a>
+    <a href="process.html">Process</a>
+    <a href="solar-calculator.html">Solar Estimator</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html" class="nav-cta" style="display:inline-block; margin-top: 1rem;">Get in Touch</a>
+  </nav>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-monogram" aria-label="IBEN Home">
+        <svg class="iben-logo" viewBox="0 0 70 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="2" x2="8" y2="86" stroke="currentColor" stroke-width="2"/>
+          <line x1="2" y1="2" x2="14" y2="2" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="8" x2="30" y2="8" stroke="currentColor" stroke-width="2"/>
+          <path d="M30 8 Q44 8 44 19 Q44 30 30 30" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="30" x2="30" y2="30" stroke="currentColor" stroke-width="2"/>
+          <path d="M30 30 Q46 30 46 42 Q46 54 30 54" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="54" x2="30" y2="54" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="60" x2="30" y2="60" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="72" x2="24" y2="72" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="84" x2="30" y2="84" stroke="currentColor" stroke-width="2"/>
+          <line x1="40" y1="60" x2="40" y2="84" stroke="currentColor" stroke-width="2"/>
+          <line x1="40" y1="60" x2="62" y2="84" stroke="currentColor" stroke-width="2"/>
+          <line x1="62" y1="60" x2="62" y2="84" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="disciplines.html">Disciplines</a>
+        <a href="process.html">Process</a>
+        <a href="solar-calculator.html">Solar Estimator</a>
+        <a href="portfolio.html">Portfolio</a>
+      </nav>
+      <div style="display:flex; align-items:center; gap: 0.75rem;">
+        <div class="api-status-badge" id="api-status-badge"><span class="api-status-dot"></span><span id="api-status-text">API ONLINE</span></div>
+        <a href="contact.html" class="nav-cta">Get in Touch</a>
+      </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-label reveal">Solar Engineering</div>
+      <h1 class="page-hero-title reveal">Size your<br>solar system.</h1>
+      <p class="page-hero-desc reveal">
+        Interactive engineering capacity and capital expenditure estimator powered by IBEN Studio's real-time calculation API. Lagos Peak Solar Irradiance: 5.2 hours.
+      </p>
+    </div>
+  </section>
+
+  <!-- SOLAR CALCULATOR -->
+  <section class="solar-calculator-section" id="solar-calc">
+    <div class="container">
+      <div class="solar-grid reveal">
+        <!-- Input Controls -->
+        <div class="solar-input-card">
+          <div class="solar-card-title">
+            <span>System Requirements</span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #DFB76C;">LAGOS PEAK IRRADIANCE (5.2h)</span>
+          </div>
+
+          <div class="solar-slider-group">
+            <div class="solar-slider-label">
+              <span>Daily Energy Consumption</span>
+              <span class="solar-slider-val" id="val-kwh">0 kWh</span>
+            </div>
+            <input type="range" class="solar-slider" id="slider-kwh" min="5" max="250" step="5" value="5">
+          </div>
+
+          <div class="solar-slider-group">
+            <div class="solar-slider-label">
+              <span>Peak Instantaneous Load</span>
+              <span class="solar-slider-val" id="val-kw">0 kW</span>
+            </div>
+            <input type="range" class="solar-slider" id="slider-kw" min="1" max="50" step="1" value="1">
+          </div>
+
+          <div class="solar-slider-group">
+            <div class="solar-slider-label">
+              <span>Required Night Backup Duration</span>
+              <span class="solar-slider-val" id="val-hours">0 Hours</span>
+            </div>
+            <input type="range" class="solar-slider" id="slider-hours" min="4" max="24" step="2" value="4">
+          </div>
+
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-lg);">
+            * Sizing uses 80% Depth of Discharge for LiFePO4 battery banks and 1.25x surge headroom for hybrid inverters.
+          </p>
+        </div>
+
+        <!-- Output ROI Card -->
+        <div class="solar-output-card" id="solar-output-card">
+          <div class="solar-card-title">
+            <span>Engineering Quote Summary</span>
+            <span class="zero-state-badge">PROCESSING...</span>
+          </div>
+
+          <div class="solar-metrics-grid">
+            <div class="solar-metric-box">
+              <div class="solar-metric-label">Inverter Capacity</div>
+              <div class="solar-metric-value" id="out-kva">0 kVA</div>
+            </div>
+            <div class="solar-metric-box">
+              <div class="solar-metric-label">LiFePO4 Storage</div>
+              <div class="solar-metric-value" id="out-battery">0 kWh</div>
+            </div>
+            <div class="solar-metric-box">
+              <div class="solar-metric-label">Solar PV Array</div>
+              <div class="solar-metric-value" id="out-solar">0 kWp</div>
+            </div>
+            <div class="solar-metric-box">
+              <div class="solar-metric-label">550W Panel Count</div>
+              <div class="solar-metric-value" id="out-panels">0 Panels</div>
+            </div>
+          </div>
+
+          <div class="solar-capex-highlight">
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; color: #8A8480;">ESTIMATED CAPITAL EXPENDITURE</div>
+            <div class="solar-capex-val" id="out-capex">₦0</div>
+            <div style="font-size: var(--text-sm); color: #DFB76C;" id="out-payback">Processing... — Awaiting Input</div>
+          </div>
+
+          <button class="nav-cta" id="btn-request-quote" style="width: 100%; margin-top: var(--space-lg); justify-content: center; text-align:center;">
+            Request Bespoke Quote (#<span id="out-quote-id">PROCESSING</span>)
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom reveal">
+        <div class="footer-copyright">&copy; 2026 IBEN Studio. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/page-transition.js"></script>
+</body>
+</html>

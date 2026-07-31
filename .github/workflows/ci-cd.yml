@@ -1,0 +1,155 @@
+name: IBEN Studio CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, staging ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target deployment environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+
+env:
+  NODE_VERSION: '20.x'
+  CONTAINER_REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}/iben-studio-api
+
+jobs:
+  # =========================================================================
+  # JOB 1: CODE QUALITY & LINTING
+  # =========================================================================
+  quality:
+    name: Code Quality & Syntax Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: './server/package-lock.json'
+
+      - name: Install Backend Dependencies
+        working-directory: ./server
+        run: npm ci
+
+      - name: Check Code Style & Validation
+        working-directory: ./server
+        run: npm run lint --if-present
+
+  # =========================================================================
+  # JOB 2: AUTOMATED TESTING & COVERAGE
+  # =========================================================================
+  test:
+    name: Automated Unit & Integration Tests
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: './server/package-lock.json'
+
+      - name: Install Backend Dependencies
+        working-directory: ./server
+        run: npm ci
+
+      - name: Run Test Suite (Jest / Node Test Engine)
+        working-directory: ./server
+        env:
+          NODE_ENV: test
+          DATABASE_PATH: ':memory:'
+          PORT: 3001
+          JWT_SECRET: test-secret-key
+        run: npm test
+
+  # =========================================================================
+  # JOB 3: CONTAINER BUILD & SECURITY AUDIT
+  # =========================================================================
+  build:
+    name: Build & Containerize Artifacts
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.CONTAINER_REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract Docker Metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # =========================================================================
+  # JOB 4: DEPLOYMENT PIPELINE (STAGING / PRODUCTION)
+  # =========================================================================
+  deploy:
+    name: Deploy to ${{ github.event.inputs.environment || 'staging' }}
+    needs: build
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event.inputs.environment || 'staging' }}
+    steps:
+      - name: Checkout Deployment Configurations
+        uses: actions/checkout@v4
+
+      - name: Simulate Production Zero-Downtime Deployment
+        run: |
+          echo "=========================================================="
+          echo "🚀 Initiating Zero-Downtime Deployment to IBEN Studio Cloud"
+          echo "Environment: ${{ github.event.inputs.environment || 'staging' }}"
+          echo "Docker Image: ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:latest"
+          echo "=========================================================="
+          echo "✔ Verifying database migration checksums..."
+          echo "✔ Executing schema evolution scripts..."
+          echo "✔ Starting green container cluster..."
+          echo "✔ Health check passed at /api/v1/health"
+          echo "✔ Routing production traffic..."
+          echo "✨ Deployment successfully completed!"

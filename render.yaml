@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: iben-studio-api
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: ALLOWED_ORIGINS
+        value: "*"
+      - key: API_PREFIX
+        value: /api/v1
+    disk:
+      name: iben-studio-data
+      mountPath: /opt/render/project/src/server/data
+      sizeGB: 1

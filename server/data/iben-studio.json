@@ -1,0 +1,73 @@
+{
+  "inquiries": [],
+  "portfolio": [
+    {
+      "id": "port-000-a",
+      "title": "Processing... — Case Study Coming Soon",
+      "discipline": "web-development",
+      "category": "Web Development",
+      "client": "Processing...",
+      "year": 0,
+      "description": "Processing... — Case study data ingestion pipeline active. This entry will be populated once the first web development commission is completed and verified by the IBEN Studio engineering team.",
+      "metrics": "0.00% / 00 Active Users",
+      "image": "assets/images/portfolio-digital.png",
+      "tags": [
+        "Processing..."
+      ]
+    },
+    {
+      "id": "port-000-b",
+      "title": "Processing... — Case Study Coming Soon",
+      "discipline": "solar-engineering",
+      "category": "Solar Engineering",
+      "client": "Processing...",
+      "year": 0,
+      "description": "Processing... — Solar infrastructure case study ingestion pending. Metrics will appear here once the first solar system installation is commissioned and verified.",
+      "metrics": "0 kWp Installed / ₦0 Savings",
+      "image": "assets/images/portfolio-solar.png",
+      "tags": [
+        "Processing..."
+      ]
+    },
+    {
+      "id": "port-000-c",
+      "title": "Processing... — Case Study Coming Soon",
+      "discipline": "software-applications",
+      "category": "Software Applications",
+      "client": "Processing...",
+      "year": 0,
+      "description": "Processing... — Software application case study data pipeline initializing. This entry will be populated upon the first enterprise SaaS commission.",
+      "metrics": "0 Transactions / 00 Active Users",
+      "image": "assets/images/portfolio-editorial.png",
+      "tags": [
+        "Processing..."
+      ]
+    },
+    {
+      "id": "port-000-d",
+      "title": "Processing... — Case Study Coming Soon",
+      "discipline": "beadwork-fashion",
+      "category": "Beadwork & Beaded Fashion",
+      "client": "Processing...",
+      "year": 0,
+      "description": "Processing... — Heritage beadwork case study ingestion pending. Artisan hours and craftsmanship metrics will appear here once the first bespoke commission is completed.",
+      "metrics": "0 Hours Artisan Handcraft",
+      "image": "assets/images/portfolio-beadwork.png",
+      "tags": [
+        "Processing..."
+      ]
+    }
+  ],
+  "beadworkCatalog": [
+    {
+      "id": "bead-000",
+      "name": "Processing... — Catalog Item Coming Soon",
+      "basePriceNGN": 0,
+      "category": "Processing...",
+      "leadTimeWeeks": 0,
+      "description": "Processing... — Beadwork catalog ingestion pipeline active. Items will appear here once the artisan inventory is verified."
+    }
+  ],
+  "solarQuotes": [],
+  "telemetryLogs": []
+}

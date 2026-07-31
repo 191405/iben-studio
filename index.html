@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBEN — Building what Nigeria needs next</title>
+  <meta name="description" content="IBEN is a multidisciplinary studio operating at the intersection of software, energy, and craft — engineering digital systems, solar infrastructure, and hand-beaded fashion. Est. Lagos.">
+  <meta name="keywords" content="IBEN, web development, software applications, solar engineering, beadwork, fashion, Lagos, Nigeria, multidisciplinary studio">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="IBEN — Building what Nigeria needs next">
+  <meta property="og:description" content="A multidisciplinary studio at the intersection of software, energy, and craft.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231A1A1A'/><text x='50' y='58' font-family='Georgia' font-size='28' font-weight='bold' fill='%23F5EDE0' text-anchor='middle'>IBEN</text></svg>">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div class="page-loader">
+    <div class="loader-text">IBEN</div>
+  </div>
+
+  <!-- Mobile Navigation Drawer -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="disciplines.html">Disciplines</a>
+    <a href="process.html">Process</a>
+    <a href="solar-calculator.html">Solar Estimator</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html" class="nav-cta" style="display:inline-block; margin-top: 1rem;">Get in Touch</a>
+  </nav>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <!-- IBEN Monogram Logo -->
+      <a href="#" class="logo-monogram" aria-label="IBEN Home">
+        <svg class="iben-logo" viewBox="0 0 70 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- I — full height vertical with serif -->
+          <line x1="8" y1="2" x2="8" y2="86" stroke="currentColor" stroke-width="2"/>
+          <line x1="2" y1="2" x2="14" y2="2" stroke="currentColor" stroke-width="2"/>
+          <!-- B — upper portion -->
+          <line x1="8" y1="8" x2="30" y2="8" stroke="currentColor" stroke-width="2"/>
+          <path d="M30 8 Q44 8 44 19 Q44 30 30 30" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="30" x2="30" y2="30" stroke="currentColor" stroke-width="2"/>
+          <path d="M30 30 Q46 30 46 42 Q46 54 30 54" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="54" x2="30" y2="54" stroke="currentColor" stroke-width="2"/>
+          <!-- E — lower left -->
+          <line x1="8" y1="60" x2="30" y2="60" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="72" x2="24" y2="72" stroke="currentColor" stroke-width="2"/>
+          <line x1="8" y1="84" x2="30" y2="84" stroke="currentColor" stroke-width="2"/>
+          <!-- N — lower right -->
+          <line x1="40" y1="60" x2="40" y2="84" stroke="currentColor" stroke-width="2"/>
+          <line x1="40" y1="60" x2="62" y2="84" stroke="currentColor" stroke-width="2"/>
+          <line x1="62" y1="60" x2="62" y2="84" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="disciplines.html">Disciplines</a>
+        <a href="process.html">Process</a>
+        <a href="solar-calculator.html">Solar Estimator</a>
+        <a href="portfolio.html">Portfolio</a>
+      </nav>
+
+      <div style="display:flex; align-items:center; gap: 0.75rem;">
+        <div class="api-status-badge" id="api-status-badge" title="Connected to IBEN Studio Enterprise Backend API">
+          <span class="api-status-dot"></span>
+          <span id="api-status-text">API ONLINE</span>
+        </div>
+        <a href="contact.html" class="nav-cta">Get in Touch</a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO SECTION
+       ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <!-- Meta Bar -->
+      <div class="hero-meta reveal">
+        <div class="hero-meta-left">
+          Institutes of Business Executives Nigeria / Est. Lagos
+        </div>
+        <div class="hero-meta-right">
+          <span>Crew</span>
+          <span>›</span>
+          <span>Identity Portal</span>
+          <span>›</span>
+          <span>Vol. 01</span>
+        </div>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="hero-headline reveal">
+        Building what Nigeria needs next.
+      </h1>
+
+      <!-- Description -->
+      <p class="hero-description reveal">
+        A multidisciplinary studio operating at the intersection of software, energy, and craft — engineering digital systems, solar infrastructure, and hand-beaded fashion. Est. Lagos.
+      </p>
+
+      <!-- Discipline Previews -->
+      <div class="hero-disciplines reveal">
+        <!-- 01 Web Development -->
+        <div class="hero-discipline-item">
+          <div class="hero-discipline-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="14" rx="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="9" y1="17" x2="9" y2="21"/>
+              <line x1="15" y1="17" x2="15" y2="21"/>
+              <line x1="7" y1="21" x2="17" y2="21"/>
+            </svg>
+          </div>
+          <div class="hero-discipline-text">
+            <span class="hero-discipline-num">00</span>
+            <span class="hero-discipline-title">Web Development</span>
+            <span class="hero-discipline-desc">Building fast, accessible, and purpose-driven websites.</span>
+          </div>
+        </div>
+
+        <!-- 02 Software Applications -->
+        <div class="hero-discipline-item">
+          <div class="hero-discipline-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="18" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="18" x2="12" y2="21"/>
+              <polyline points="7 8 10 11 7 14"/>
+              <line x1="13" y1="14" x2="17" y2="14"/>
+            </svg>
+          </div>
+          <div class="hero-discipline-text">
+            <span class="hero-discipline-num">00</span>
+            <span class="hero-discipline-title">Software Applications</span>
+            <span class="hero-discipline-desc">Designing scalable software that solves real problems.</span>
+          </div>
+        </div>
+
+        <!-- 03 Solar Engineering -->
+        <div class="hero-discipline-item">
+          <div class="hero-discipline-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="4"/>
+              <line x1="12" y1="2" x2="12" y2="5"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+              <line x1="4.93" y1="4.93" x2="7.05" y2="7.05"/>
+              <line x1="16.95" y1="16.95" x2="19.07" y2="19.07"/>
+              <line x1="2" y1="12" x2="5" y2="12"/>
+              <line x1="19" y1="12" x2="22" y2="12"/>
+              <line x1="4.93" y1="19.07" x2="7.05" y2="16.95"/>
+              <line x1="16.95" y1="7.05" x2="19.07" y2="4.93"/>
+            </svg>
+          </div>
+          <div class="hero-discipline-text">
+            <span class="hero-discipline-num">00</span>
+            <span class="hero-discipline-title">Solar Engineering</span>
+            <span class="hero-discipline-desc">Delivering clean energy systems for a sustainable tomorrow.</span>
+          </div>
+        </div>
+
+        <!-- 04 Beadwork & Beaded Fashion -->
+        <div class="hero-discipline-item">
+          <div class="hero-discipline-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2L15 8.5L22 9.5L17 14.5L18 21.5L12 18.5L6 21.5L7 14.5L2 9.5L9 8.5Z"/>
+            </svg>
+          </div>
+          <div class="hero-discipline-text">
+            <span class="hero-discipline-num">00</span>
+            <span class="hero-discipline-title">Beadwork & Fashion</span>
+            <span class="hero-discipline-desc">Celebrating heritage through meticulous craft and design.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Footer -->
+      <div class="hero-footer reveal">
+        <div class="hero-pagination">
+          <span class="current">00</span> / 00
+        </div>
+        <div class="hero-scroll-indicator">
+          Scroll to explore
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <polyline points="19 12 12 19 5 12"/>
+          </svg>
+        </div>
+        <div class="accent-square"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       OUR DISCIPLINES
+       ============================================================ -->
+  <section class="disciplines" id="disciplines">
+    <div class="container">
+      <h2 class="section-label reveal">Our Disciplines</h2>
+      <p class="disciplines-intro reveal">
+        A multidisciplinary studio operating at the intersection of software, energy, and craft.
+      </p>
+
+      <div class="disciplines-grid">
+        <!-- Card 01 -->
+        <div class="discipline-card reveal reveal-delay-1">
+          <div class="discipline-card-header">
+            <div class="discipline-number" data-number="0">00</div>
+            <div class="discipline-divider"></div>
+            <h3 class="discipline-title">Web<br>Development</h3>
+            <p class="discipline-desc">Building fast, accessible, and purpose-driven websites. We craft digital experiences that tell stories, drive engagement, and deliver measurable results.</p>
+          </div>
+          <div class="discipline-cta">
+            <span class="discipline-cta-text">Coming Soon</span>
+            <span class="discipline-cta-arrow">
+              <svg viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Card 02 -->
+        <div class="discipline-card reveal reveal-delay-2">
+          <div class="discipline-card-header">
+            <div class="discipline-number" data-number="0">00</div>
+            <div class="discipline-divider"></div>
+            <h3 class="discipline-title">Software<br>Applications</h3>
+            <p class="discipline-desc">Designing scalable software that solves real problems. From concept to deployment, we engineer robust applications that power businesses forward.</p>
+          </div>
+          <div class="discipline-cta">
+            <span class="discipline-cta-text">Coming Soon</span>
+            <span class="discipline-cta-arrow">
+              <svg viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Card 03 -->
+        <div class="discipline-card reveal reveal-delay-3">
+          <div class="discipline-card-header">
+            <div class="discipline-number" data-number="0">00</div>
+            <div class="discipline-divider"></div>
+            <h3 class="discipline-title">Solar<br>Engineering</h3>
+            <p class="discipline-desc">Delivering clean energy systems for a sustainable tomorrow. We design, install, and maintain solar infrastructure that powers communities and reduces carbon footprints.</p>
+          </div>
+          <div class="discipline-cta">
+            <span class="discipline-cta-text">Coming Soon</span>
+            <span class="discipline-cta-arrow">
+              <svg viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Card 04 -->
+        <div class="discipline-card reveal reveal-delay-4">
+          <div class="discipline-card-header">
+            <div class="discipline-number" data-number="0">00</div>
+            <div class="discipline-divider"></div>
+            <h3 class="discipline-title">Beadwork &<br>Beaded Fashion</h3>
+            <p class="discipline-desc">Celebrating heritage through meticulous craft and design. Each piece is a testament to tradition, handcrafted with precision and cultural pride.</p>
+          </div>
+          <div class="discipline-cta">
+            <span class="discipline-cta-text">Coming Soon</span>
+            <span class="discipline-cta-arrow">
+              <svg viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THE PROCESS
+       ============================================================ -->
+  <section class="process" id="process">
+    <div class="container">
+      <h2 class="section-label reveal">The Process</h2>
+
+      <div class="process-grid">
+        <!-- Process Steps -->
+        <div class="process-steps">
+          <!-- Step 1: Discovery -->
+          <div class="process-step reveal reveal-delay-1">
+            <div class="process-step-number">
+              <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </div>
+            <div class="process-step-content">
+              <h3 class="process-step-label">Discovery</h3>
+              <p class="process-step-desc">We begin by understanding your vision, auditing existing landscapes, and uncovering the core opportunities that will define the project's direction.</p>
+            </div>
+          </div>
+
+          <!-- Step 2: Design -->
+          <div class="process-step reveal reveal-delay-2">
+            <div class="process-step-number">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 20h9"/>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+              </svg>
+            </div>
+            <div class="process-step-content">
+              <h3 class="process-step-label">Design</h3>
+              <p class="process-step-desc">Finalized concepts take shape through wireframes, prototypes, and iterative design sprints — ensuring every detail aligns with your goals.</p>
+            </div>
+          </div>
+
+          <!-- Step 3: Build -->
+          <div class="process-step reveal reveal-delay-3">
+            <div class="process-step-number">
+              <svg viewBox="0 0 24 24">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+                <line x1="14" y1="4" x2="10" y2="20"/>
+              </svg>
+            </div>
+            <div class="process-step-content">
+              <h3 class="process-step-label">Build</h3>
+              <p class="process-step-desc">Our engineering team brings designs to life with clean architecture, rigorous testing, and an unwavering focus on performance and quality.</p>
+            </div>
+          </div>
+
+          <!-- Step 4: Deliver -->
+          <div class="process-step reveal reveal-delay-4">
+            <div class="process-step-number">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <div class="process-step-content">
+              <h3 class="process-step-label">Deliver</h3>
+              <p class="process-step-desc">We launch with precision, providing comprehensive documentation, training, and ongoing support to ensure lasting success.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Process Visual Illustration -->
+        <div class="process-visual reveal">
+          <div class="process-path-container">
+            <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet">
+              <!-- Decorative stepping path -->
+              <path class="process-path-line" d="M 50 50 C 100 50, 150 100, 200 120 S 350 100, 350 180 C 350 220, 200 250, 150 280 S 50 330, 100 380 C 150 420, 300 400, 350 450" />
+
+              <!-- Step markers -->
+              <circle cx="50" cy="50" r="8" fill="#8B6914" opacity="0.3"/>
+              <circle cx="50" cy="50" r="4" fill="#8B6914"/>
+
+              <circle cx="350" cy="180" r="8" fill="#8B6914" opacity="0.3"/>
+              <circle cx="350" cy="180" r="4" fill="#8B6914"/>
+
+              <circle cx="100" cy="380" r="8" fill="#8B6914" opacity="0.3"/>
+              <circle cx="100" cy="380" r="4" fill="#8B6914"/>
+
+              <circle cx="350" cy="450" r="8" fill="#8B6914" opacity="0.3"/>
+              <circle cx="350" cy="450" r="4" fill="#8B6914"/>
+
+              <!-- Labels -->
+              <text x="50" y="30" font-family="Space Mono, monospace" font-size="10" fill="#6B6560" letter-spacing="2" text-anchor="start">01</text>
+              <text x="350" y="160" font-family="Space Mono, monospace" font-size="10" fill="#6B6560" letter-spacing="2" text-anchor="end">02</text>
+              <text x="100" y="415" font-family="Space Mono, monospace" font-size="10" fill="#6B6560" letter-spacing="2" text-anchor="start">03</text>
+              <text x="350" y="480" font-family="Space Mono, monospace" font-size="10" fill="#6B6560" letter-spacing="2" text-anchor="end">04</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INTERACTIVE SOLAR ENGINEERING SYSTEM & ROI CALCULATOR
+       ============================================================ -->
+  <section class="solar-calculator-section" id="solar-calc">
+    <div class="container">
+      <h2 class="section-label reveal">Solar Sizing & ROI Estimator</h2>
+      <p class="disciplines-intro reveal">
+        Interactive engineering capacity and capital expenditure estimator powered by IBEN Studio's real-time calculation API.
+      </p>
+
+      <div class="solar-grid reveal">
+        <!-- Input Controls -->
+        <div class="solar-input-card">
+          <div class="solar-card-title">
+            <span>System Requirements</span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #DFB76C;">LAGOS PEAK IRRADIANCE (5.2h)</span>
+          </div>
+
+          <!-- Slider 1: Daily Usage kWh -->
+          <div class="solar-slider-group">
+            <div class="solar-slider-label">
+              <span>Daily Energy Consumption</span>
+              <span class="solar-slider-val" id="val-kwh">45 kWh</span>
+            </div>
+            <input type="range" class="solar-slider" id="slider-kwh" min="5" max="250" step="5" value="45">
+          </div>
+
+          <!-- Slider 2: Peak Surge Load kW -->
+          <div class="solar-slider-group">
+            <div class="solar-slider-label">
+              <span>Peak Instantaneous Load</span>
+              <span class="solar-slider-val" id="val-kw">8 kW</span>
+            </div>
+            <input type="range" class="solar-slider" id="slider-kw" min="1" max="50" step="1" value="8">
+          </div>
+
+          <!-- Slider 3: Battery Backup Hours -->
+          <div class="solar-slider-group">
+            <div class="solar-slider-label">
+              <span>Required Night Backup Duration</span>
+              <span class="solar-slider-val" id="val-hours">12 Hours</span>
+            </div>
+            <input type="range" class="solar-slider" id="slider-hours" min="4" max="24" step="2" value="12">
+          </div>
+
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-lg);">
+            * Sizing uses 80% Depth of Discharge for LiFePO4 battery banks and 1.25x surge headroom for hybrid inverters.
+          </p>
+        </div>
+
+        <!-- Output ROI Card -->
+        <div class="solar-output-card" id="solar-output-card">
+          <div class="solar-card-title">
+            <span>Engineering Quote Summary</span>
+            <span class="api-status-badge" style="background:#1A1A1A; color:#DFB76C; font-size:0.7rem;">API VERIFIED</span>
+          </div>
+
+          <div class="solar-metrics-grid">
+            <div class="solar-metric-box">
+              <div class="solar-metric-label">Inverter Capacity</div>
+              <div class="solar-metric-value" id="out-kva">13 kVA</div>
+            </div>
+            <div class="solar-metric-box">
+              <div class="solar-metric-label">LiFePO4 Storage</div>
+              <div class="solar-metric-value" id="out-battery">130.4 kWh</div>
+            </div>
+            <div class="solar-metric-box">
+              <div class="solar-metric-label">Solar PV Array</div>
+              <div class="solar-metric-value" id="out-solar">10.2 kWp</div>
+            </div>
+            <div class="solar-metric-box">
+              <div class="solar-metric-label">550W Panel Count</div>
+              <div class="solar-metric-value" id="out-panels">19 Panels</div>
+            </div>
+          </div>
+
+          <div class="solar-capex-highlight">
+            <div style="font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; color: #8A8480;">ESTIMATED CAPITAL EXPENDITURE</div>
+            <div class="solar-capex-val" id="out-capex">₦60,086,000</div>
+            <div style="font-size: var(--text-sm); color: #DFB76C;" id="out-payback">Est. Payback: 3.2 Years vs Diesel Generation</div>
+          </div>
+
+          <button class="nav-cta" id="btn-request-quote" style="width: 100%; margin-top: var(--space-lg); justify-content: center; text-align:center;">
+            Request Bespoke Quote (#<span id="out-quote-id">LIVE</span>)
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PORTFOLIO HIGHLIGHTS
+       ============================================================ -->
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <h2 class="section-label reveal">Portfolio Highlights</h2>
+
+      <!-- Dynamic Category Filters -->
+      <div class="portfolio-filters reveal" id="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">All Disciplines</button>
+        <button class="filter-btn" data-filter="web-development">Web Development</button>
+        <button class="filter-btn" data-filter="software-applications">Software Apps</button>
+        <button class="filter-btn" data-filter="solar-engineering">Solar Engineering</button>
+        <button class="filter-btn" data-filter="beadwork-fashion">Beaded Fashion</button>
+      </div>
+
+      <div class="portfolio-gallery" id="portfolio-gallery">
+        <div class="portfolio-item reveal reveal-delay-1">
+          <img src="assets/images/portfolio-editorial.png" alt="Editorial design project — magazine layout" loading="lazy">
+          <div class="portfolio-item-overlay">
+            <div class="portfolio-item-title">Editorial Design</div>
+            <div class="portfolio-item-cat">Brand Identity</div>
+          </div>
+        </div>
+
+        <div class="portfolio-item reveal reveal-delay-2">
+          <img src="assets/images/portfolio-digital.png" alt="Digital product — web application interface" loading="lazy">
+          <div class="portfolio-item-overlay">
+            <div class="portfolio-item-title">Digital Platform</div>
+            <div class="portfolio-item-cat">Web Development</div>
+          </div>
+        </div>
+
+        <div class="portfolio-item reveal reveal-delay-3">
+          <img src="assets/images/portfolio-solar.png" alt="Solar engineering — rooftop installation" loading="lazy">
+          <div class="portfolio-item-overlay">
+            <div class="portfolio-item-title">Solar Infrastructure</div>
+            <div class="portfolio-item-cat">Clean Energy</div>
+          </div>
+        </div>
+
+        <div class="portfolio-item reveal reveal-delay-4">
+          <img src="assets/images/portfolio-beadwork.png" alt="Beaded fashion — handcrafted accessories" loading="lazy">
+          <div class="portfolio-item-overlay">
+            <div class="portfolio-item-title">Heritage Beadwork</div>
+            <div class="portfolio-item-cat">Beaded Fashion</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PORTFOLIO CASE STUDY DETAIL MODAL (LIGHTBOX)
+       ============================================================ -->
+  <div class="portfolio-modal" id="portfolio-modal" aria-hidden="true" role="dialog">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">&times;</button>
+      <div id="modal-content-container">
+        <!-- Dynamic content injected by js/main.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       ENTERPRISE CONTACT & PROJECT INTAKE PORTAL
+       ============================================================ -->
+  <section class="inquiry-section" id="intake-portal">
+    <div class="container">
+      <h2 class="section-label reveal">Initiate a Commission</h2>
+      <p class="disciplines-intro reveal">
+        Engage IBEN Studio's engineering and craft teams for web architecture, software systems, solar infrastructure, or bespoke beaded fashion.
+      </p>
+
+      <form class="inquiry-form reveal" id="inquiry-form" novalidate>
+        <div class="inquiry-form-grid">
+          <div class="form-group">
+            <label class="form-label" for="inq-name">Your Name / Title *</label>
+            <input type="text" class="form-input" id="inq-name" required placeholder="e.g. Adebayo Ogunlesi">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inq-email">Corporate Email *</label>
+            <input type="email" class="form-input" id="inq-email" required placeholder="adebayo@company.ng">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inq-phone">Phone Number / WhatsApp</label>
+            <input type="tel" class="form-input" id="inq-phone" placeholder="+234 (0) 803 000 0000">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inq-discipline">Target Discipline *</label>
+            <select class="form-select" id="inq-discipline" required>
+              <option value="web-development">01 — Web Development & Digital Identity</option>
+              <option value="software-applications">02 — Enterprise Software Applications</option>
+              <option value="solar-engineering">03 — Solar Engineering & Rooftop PV</option>
+              <option value="beadwork-fashion">04 — Bespoke Beadwork & Beaded Fashion</option>
+              <option value="general">05 — General Multidisciplinary Studio Inquiry</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: var(--space-md);">
+          <label class="form-label" for="inq-message">Project Scope & Specifications *</label>
+          <textarea class="form-textarea" id="inq-message" rows="4" required placeholder="Describe your vision, timeline, or required energy capacity..."></textarea>
+        </div>
+
+        <button type="submit" class="nav-cta" id="btn-submit-inquiry" style="width: 100%; justify-content:center; margin-top: var(--space-md);">
+          Submit Engineering Commission
+        </button>
+
+        <div class="form-status-msg" id="form-status-msg"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <!-- Contact Bar -->
+      <div class="footer-contact-bar reveal">
+        <a href="mailto:hello@iben.studio" class="footer-contact-item">hello@iben.studio</a>
+        <a href="https://wa.me/2340000000000" class="footer-contact-item">#WA</a>
+        <a href="tel:+2340000000000" class="footer-contact-item">+234</a>
+        <a href="mailto:hello@iben.studio" class="footer-contact-item">HELLO@</a>
+      </div>
+
+      <!-- Footer Grid -->
+      <div class="footer-grid reveal">
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <a href="#" class="logo-monogram" aria-label="IBEN Home">
+            <svg class="iben-logo" viewBox="0 0 70 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- I — full height vertical with serif -->
+              <line x1="8" y1="2" x2="8" y2="86" stroke="currentColor" stroke-width="2"/>
+              <line x1="2" y1="2" x2="14" y2="2" stroke="currentColor" stroke-width="2"/>
+              <!-- B — upper portion -->
+              <line x1="8" y1="8" x2="30" y2="8" stroke="currentColor" stroke-width="2"/>
+              <path d="M30 8 Q44 8 44 19 Q44 30 30 30" stroke="currentColor" stroke-width="2"/>
+              <line x1="8" y1="30" x2="30" y2="30" stroke="currentColor" stroke-width="2"/>
+              <path d="M30 30 Q46 30 46 42 Q46 54 30 54" stroke="currentColor" stroke-width="2"/>
+              <line x1="8" y1="54" x2="30" y2="54" stroke="currentColor" stroke-width="2"/>
+              <!-- E — lower left -->
+              <line x1="8" y1="60" x2="30" y2="60" stroke="currentColor" stroke-width="2"/>
+              <line x1="8" y1="72" x2="24" y2="72" stroke="currentColor" stroke-width="2"/>
+              <line x1="8" y1="84" x2="30" y2="84" stroke="currentColor" stroke-width="2"/>
+              <!-- N — lower right -->
+              <line x1="40" y1="60" x2="40" y2="84" stroke="currentColor" stroke-width="2"/>
+              <line x1="40" y1="60" x2="62" y2="84" stroke="currentColor" stroke-width="2"/>
+              <line x1="62" y1="60" x2="62" y2="84" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </a>
+          <p class="footer-brand-desc">
+            A multidisciplinary studio at the intersection of software, energy, and craft. Est. Lagos.
+          </p>
+        </div>
+
+        <!-- Navigate -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Navigate</h4>
+          <a href="disciplines.html">Disciplines</a>
+          <a href="process.html">Process</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Services</h4>
+          <a href="services/web-development.html">Web Development</a>
+          <a href="services/software-applications.html">Software Apps</a>
+          <a href="services/solar-engineering.html">Solar Engineering</a>
+          <a href="services/beadwork-fashion.html">Beaded Fashion</a>
+        </div>
+
+        <!-- Help -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Help</h4>
+          <a href="#">Press</a>
+          <a href="#">Contact</a>
+          <a href="#">Careers</a>
+          <a href="#">FAQs</a>
+        </div>
+      </div>
+
+      <!-- Bottom -->
+      <div class="footer-bottom reveal">
+        <div class="footer-copyright">
+          &copy; 2026 IBEN Studio. All rights reserved.
+        </div>
+        <div class="footer-socials">
+          <!-- Facebook -->
+          <a href="#" class="footer-social-link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <!-- YouTube -->
+          <a href="#" class="footer-social-link" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#F5EDE0"/></svg>
+          </a>
+          <!-- Pinterest -->
+          <a href="#" class="footer-social-link" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.25 2.67 7.9 6.44 9.34-.09-.78-.17-2 .03-2.86.18-.78 1.17-4.97 1.17-4.97s-.3-.6-.3-1.48c0-1.38.8-2.42 1.8-2.42.85 0 1.26.64 1.26 1.4 0 .86-.55 2.14-.83 3.33-.24 1 .5 1.8 1.48 1.8 1.78 0 3.14-1.88 3.14-4.57 0-2.39-1.72-4.06-4.17-4.06-2.84 0-4.51 2.13-4.51 4.33 0 .86.33 1.78.74 2.28.08.1.09.19.07.29-.08.31-.25 1-.28 1.14-.05.19-.16.23-.36.14-1.33-.62-2.16-2.57-2.16-4.14 0-3.37 2.45-6.46 7.06-6.46 3.7 0 6.58 2.64 6.58 6.17 0 3.68-2.32 6.64-5.54 6.64-1.08 0-2.1-.56-2.45-1.22l-.67 2.54c-.24.93-.89 2.1-1.33 2.81C10.16 21.88 11.06 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/page-transition.js"></script>
+</body>
+</html>

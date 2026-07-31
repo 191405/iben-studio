@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # ============================================================================
+  # SERVICE 1: IBEN STUDIO ENTERPRISE API & FULL-STACK ENGINE
+  # ============================================================================
+  iben-studio-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: iben-studio-api
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_PATH=/data/iben-studio.sqlite
+      - PUBLIC_DIR=/app/public
+      - JWT_SECRET=iben-studio-super-secret-key-prod
+      - ALLOWED_ORIGINS=*
+      - LOG_LEVEL=info
+    volumes:
+      - iben-data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:3000/api/v1/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - iben-network
+
+volumes:
+  iben-data:
+    name: iben-studio-persistent-data
+
+networks:
+  iben-network:
+    name: iben-studio-network
+    driver: bridge
