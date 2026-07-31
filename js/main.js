@@ -569,6 +569,20 @@ function initAdminPortal() {
     renderModalState();
   });
 
+  document.querySelectorAll('.mobile-admin-portal-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const mobileNav = document.getElementById('mobile-nav');
+      const toggle = document.getElementById('menu-toggle');
+      if (mobileNav) mobileNav.classList.remove('open');
+      if (toggle) toggle.classList.remove('active');
+      document.body.style.overflow = '';
+      overlay.classList.add('active');
+      overlay.setAttribute('aria-hidden', 'false');
+      renderModalState();
+    });
+  });
+
   if (btnClose) {
     btnClose.addEventListener('click', () => {
       overlay.classList.remove('active');
