@@ -181,10 +181,89 @@ function getAdminStats(req, res) {
   });
 }
 
+/**
+ * @desc    Create a new portfolio case study
+ * @route   POST /api/v1/admin/portfolio
+ * @access  Private (Admin only)
+ */
+function createPortfolioItem(req, res) {
+  const { title, discipline, category, client, year, description, metrics, image, tags } = req.body;
+
+  if (!title || !discipline) {
+    return res.status(400).json({
+      success: false,
+      error: { code: 400, message: 'Title and discipline are required fields.' }
+    });
+  }
+
+  const newItem = db.createPortfolioItem({
+    title: title.trim(),
+    discipline: discipline.trim(),
+    category: category ? category.trim() : discipline,
+    client: client ? client.trim() : 'Confidential Client',
+    year: year || new Date().getFullYear(),
+    description: description ? description.trim() : '',
+    metrics: metrics ? metrics.trim() : 'Pending verification',
+    image: image || 'assets/images/portfolio-web.png',
+    tags: Array.isArray(tags) ? tags : (typeof tags === 'string' ? tags.split(',').map(t => t.trim()) : ['Case Study'])
+  });
+
+  return res.status(201).json({
+    success: true,
+    message: 'Portfolio case study created successfully.',
+    data: newItem
+  });
+}
+
+/**
+ * @desc    Update an existing portfolio case study
+ * @route   PUT /api/v1/admin/portfolio/:id
+ * @access  Private (Admin only)
+ */
+function updatePortfolioItem(req, res) {
+  const updated = db.updatePortfolioItem(req.params.id, req.body);
+  if (!updated) {
+    return res.status(404).json({
+      success: false,
+      error: { code: 404, message: `Portfolio item with ID ${req.params.id} not found.` }
+    });
+  }
+
+  return res.status(200).json({
+    success: true,
+    message: 'Portfolio case study updated successfully.',
+    data: updated
+  });
+}
+
+/**
+ * @desc    Delete a portfolio case study
+ * @route   DELETE /api/v1/admin/portfolio/:id
+ * @access  Private (Admin only)
+ */
+function deletePortfolioItem(req, res) {
+  const removed = db.deletePortfolioItem(req.params.id);
+  if (!removed) {
+    return res.status(404).json({
+      success: false,
+      error: { code: 404, message: `Portfolio item with ID ${req.params.id} not found.` }
+    });
+  }
+
+  return res.status(200).json({
+    success: true,
+    message: `Portfolio item '${removed.title}' (${removed.id}) deleted successfully.`,
+    data: removed
+  });
+}
+
 module.exports = {
   loginAdmin,
   getInquiries,
   getInquiryById,
   updateInquiryStatus,
-  getAdminStats
+  getAdminStats,
+  createPortfolioItem,
+  updatePortfolioItem,
+  deletePortfolioItem
 };

@@ -4,9 +4,12 @@
  * ============================================================================
  */
 const { db } = require('../../db');
+const { triggerInquiryNotification } = require('../../services/notificationService');
 
 /**
- * Creates a new client project inquiry and stores it in the database.
+ * @desc    Submit new client commission inquiry
+ * @route   POST /api/v1/inquiries
+ * @access  Public
  */
 function createInquiry(req, res) {
   try {
@@ -22,8 +25,10 @@ function createInquiry(req, res) {
       source: 'IBEN Studio Website'
     });
 
-    // In a live production environment, trigger async email notification service here
-    console.log(`📨 [NEW INQUIRY] [${discipline.toUpperCase()}] From: ${name} (${email}) - ID: ${savedInquiry.id}`);
+    // Trigger async email & webhook notification alert
+    triggerInquiryNotification(savedInquiry).catch(err => {
+      console.warn('Notification delivery warning:', err.message);
+    });
 
     return res.status(201).json({
       success: true,

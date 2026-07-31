@@ -80,6 +80,7 @@
           <span class="api-status-dot"></span>
           <span id="api-status-text">API ONLINE</span>
         </div>
+        <button id="btn-admin-portal" class="nav-cta" style="background:transparent; border:1px solid rgba(255,255,255,0.2); color:#fff; cursor:pointer;">Admin Portal</button>
         <a href="contact.html" class="nav-cta">Get in Touch</a>
       </div>
 
@@ -713,6 +714,103 @@
       </div>
     </div>
   </footer>
+
+  <!-- ============================================================
+       ENTERPRISE ADMIN PORTAL MODAL DIALOG
+       ============================================================ -->
+  <div class="admin-modal-overlay" id="admin-modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="admin-modal-content">
+      <button class="admin-modal-close" id="admin-modal-close" aria-label="Close modal">&times;</button>
+      <h3 style="font-family:var(--font-heading); font-size:1.5rem; margin-bottom:0.25rem;">Enterprise Admin Portal</h3>
+      <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin-bottom:1.5rem;">IBEN Studio Command Center — Secure JWT Access</p>
+
+      <!-- VIEW 1: ADMIN LOGIN -->
+      <div id="admin-login-view">
+        <form id="admin-login-form" onsubmit="return false;">
+          <div class="admin-form-group">
+            <label for="admin-email">Admin Email</label>
+            <input type="email" id="admin-email" value="admin@ibenstudio.com" required>
+          </div>
+          <div class="admin-form-group">
+            <label for="admin-password">Password</label>
+            <input type="password" id="admin-password" placeholder="••••••••••••" required>
+          </div>
+          <div id="admin-login-error" style="color:#ff6b6b; font-size:0.85rem; margin-bottom:1rem; display:none;"></div>
+          <button type="submit" class="btn btn-primary" id="admin-login-btn" style="width:100%;">Log In to Enterprise Dashboard</button>
+        </form>
+      </div>
+
+      <!-- VIEW 2: ADMIN DASHBOARD (Hidden until authenticated) -->
+      <div id="admin-dashboard-view" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <span style="font-size:0.8rem; color:#00FF88;">● Authenticated as admin@ibenstudio.com</span>
+          <button id="admin-logout-btn" style="background:transparent; border:1px solid rgba(255,255,255,0.2); color:#fff; padding:0.3rem 0.75rem; border-radius:6px; cursor:pointer; font-size:0.75rem;">Log Out</button>
+        </div>
+
+        <div class="admin-tabs">
+          <button class="admin-tab-btn active" id="tab-btn-create">Create Case Study</button>
+          <button class="admin-tab-btn" id="tab-btn-inquiries">Client Commissions</button>
+        </div>
+
+        <!-- TAB 1: CREATE CASE STUDY -->
+        <div id="tab-panel-create">
+          <form id="admin-portfolio-form" onsubmit="return false;">
+            <div class="admin-form-group">
+              <label for="admin-port-title">Case Study Title</label>
+              <input type="text" id="admin-port-title" placeholder="e.g. Enterprise AI Energy Platform" required>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+              <div class="admin-form-group">
+                <label for="admin-port-discipline">Discipline</label>
+                <select id="admin-port-discipline" required>
+                  <option value="web-development">Web Development</option>
+                  <option value="software-applications">Software Applications</option>
+                  <option value="solar-engineering">Solar Infrastructure</option>
+                  <option value="beadwork-fashion">Beadwork & Fashion</option>
+                </select>
+              </div>
+              <div class="admin-form-group">
+                <label for="admin-port-client">Client / Partner</label>
+                <input type="text" id="admin-port-client" placeholder="e.g. Apex Industrial Energy">
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+              <div class="admin-form-group">
+                <label for="admin-port-year">Year</label>
+                <input type="number" id="admin-port-year" value="2026">
+              </div>
+              <div class="admin-form-group">
+                <label for="admin-port-metrics">Key Value Metric</label>
+                <input type="text" id="admin-port-metrics" placeholder="e.g. 99.99% Uptime / 450MW">
+              </div>
+            </div>
+            <div class="admin-form-group">
+              <label for="admin-port-desc">Description</label>
+              <textarea id="admin-port-desc" rows="3" placeholder="Overview of the technical architecture and delivery..."></textarea>
+            </div>
+            <div class="admin-form-group">
+              <label for="admin-port-tags">Tags (Comma-separated)</label>
+              <input type="text" id="admin-port-tags" placeholder="e.g. AI/ML, BigQuery, React, Solar">
+            </div>
+            <div id="admin-port-msg" style="margin-bottom:1rem; font-size:0.85rem; display:none;"></div>
+            <button type="submit" class="btn btn-primary" id="admin-port-submit" style="width:100%;">Save & Publish to Live Site</button>
+          </form>
+        </div>
+
+        <!-- TAB 2: CLIENT COMMISSIONS -->
+        <div id="tab-panel-inquiries" style="display:none;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+            <span style="font-size:0.85rem; color:rgba(255,255,255,0.7);">Incoming Client Commissions</span>
+            <button id="admin-inquiries-refresh" style="background:rgba(255,255,255,0.1); border:none; color:#fff; padding:0.3rem 0.6rem; border-radius:4px; cursor:pointer; font-size:0.75rem;">Refresh</button>
+          </div>
+          <div id="admin-inquiries-container">
+            <p style="color:rgba(255,255,255,0.5); font-size:0.85rem;">Loading commission requests...</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="js/api.js"></script>

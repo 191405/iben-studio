@@ -1,6 +1,81 @@
 {
   "inquiries": [
     {
+      "id": "inq-1785512995305-xtjs",
+      "status": "in-review",
+      "createdAt": "2026-07-31T15:49:55.305Z",
+      "name": "Chief Emeka Okafor",
+      "email": "emeka.okafor@solar-test.ng",
+      "discipline": "solar-engineering",
+      "message": "Looking for a 15kVA commercial hybrid inverter and LiFePO4 battery setup.",
+      "phone": "+2348030009999",
+      "company": null,
+      "source": "IBEN Studio Website",
+      "updatedAt": "2026-07-31T15:49:55.492Z"
+    },
+    {
+      "id": "inq-1785512674116-7qig",
+      "status": "pending",
+      "createdAt": "2026-07-31T15:44:34.116Z",
+      "name": "Chinedu Okafor",
+      "email": "chinedu@apextech.ng",
+      "discipline": "solar-engineering",
+      "message": "We require a 200kWp rooftop solar array for our industrial plant in Ikeja.",
+      "phone": null,
+      "company": null,
+      "source": "IBEN Studio Website"
+    },
+    {
+      "id": "inq-1785512673251-nxaw",
+      "status": "in-review",
+      "createdAt": "2026-07-31T15:44:33.251Z",
+      "name": "Chief Emeka Okafor",
+      "email": "emeka.okafor@solar-test.ng",
+      "discipline": "solar-engineering",
+      "message": "Looking for a 15kVA commercial hybrid inverter and LiFePO4 battery setup.",
+      "phone": "+2348030009999",
+      "company": null,
+      "source": "IBEN Studio Website",
+      "updatedAt": "2026-07-31T15:44:33.389Z"
+    },
+    {
+      "id": "inq-1785512587955-sx1p",
+      "status": "pending",
+      "createdAt": "2026-07-31T15:43:07.955Z",
+      "name": "Chinedu Okafor",
+      "email": "chinedu@apextech.ng",
+      "discipline": "solar-engineering",
+      "message": "We require a 200kWp rooftop solar array for our industrial plant in Ikeja.",
+      "phone": null,
+      "company": null,
+      "source": "IBEN Studio Website"
+    },
+    {
+      "id": "inq-1785512586843-q3jt",
+      "status": "in-review",
+      "createdAt": "2026-07-31T15:43:06.843Z",
+      "name": "Chief Emeka Okafor",
+      "email": "emeka.okafor@solar-test.ng",
+      "discipline": "solar-engineering",
+      "message": "Looking for a 15kVA commercial hybrid inverter and LiFePO4 battery setup.",
+      "phone": "+2348030009999",
+      "company": null,
+      "source": "IBEN Studio Website",
+      "updatedAt": "2026-07-31T15:43:07.006Z"
+    },
+    {
+      "id": "inq-1785511240772-ka74",
+      "status": "pending",
+      "createdAt": "2026-07-31T15:20:40.772Z",
+      "name": "Chinedu Okafor",
+      "email": "chinedu@apextech.ng",
+      "discipline": "solar-engineering",
+      "message": "We require a 200kWp rooftop solar array for our industrial plant in Ikeja.",
+      "phone": null,
+      "company": null,
+      "source": "IBEN Studio Website"
+    },
+    {
       "id": "inq-1785511240035-tysh",
       "status": "in-review",
       "createdAt": "2026-07-31T15:20:40.035Z",
@@ -50,9 +125,9 @@
       "source": "IBEN Studio Website"
     },
     {
-      "id": "inq-1785511240772-ka74",
+      "id": "inq-1785512995945-p05d",
       "status": "pending",
-      "createdAt": "2026-07-31T15:20:40.772Z",
+      "createdAt": "2026-07-31T15:49:55.945Z",
       "name": "Chinedu Okafor",
       "email": "chinedu@apextech.ng",
       "discipline": "solar-engineering",
@@ -214,6 +289,90 @@
         "treesEquivalent": 555
       },
       "generatedAt": "2026-07-31T15:20:41.484Z"
+    },
+    {
+      "id": "sq-1785512587598-vz3z",
+      "createdAt": "2026-07-31T15:43:07.598Z",
+      "inputs": {
+        "dailyEnergyKwh": 45,
+        "peakLoadKw": 8,
+        "backupHours": 12,
+        "location": "Lagos"
+      },
+      "systemSizing": {
+        "recommendedInverterKva": 13,
+        "recommendedBatteryKwh": 130.4,
+        "recommendedSolarKwp": 10.2,
+        "panelCount550w": 19
+      },
+      "financialROI": {
+        "totalCapExNGN": 60062000,
+        "formattedTotalCapEx": "₦60,062,000",
+        "annualSavingsNGN": 9135938,
+        "formattedAnnualSavings": "₦9,135,938",
+        "paybackPeriodYears": 6.6
+      },
+      "environmentalImpact": {
+        "annualCo2OffsetKg": 11662,
+        "treesEquivalent": 555
+      },
+      "generatedAt": "2026-07-31T15:43:07.598Z"
+    },
+    {
+      "id": "sq-1785512673777-1suw",
+      "createdAt": "2026-07-31T15:44:33.777Z",
+      "inputs": {
+        "dailyEnergyKwh": 45,
+        "peakLoadKw": 8,
+        "backupHours": 12,
+        "location": "Lagos"
+      },
+      "systemSizing": {
+        "recommendedInverterKva": 13,
+        "recommendedBatteryKwh": 130.4,
+        "recommendedSolarKwp": 10.2,
+        "panelCount550w": 19
+      },
+      "financialROI": {
+        "totalCapExNGN": 60062000,
+        "formattedTotalCapEx": "₦60,062,000",
+        "annualSavingsNGN": 9135938,
+        "formattedAnnualSavings": "₦9,135,938",
+        "paybackPeriodYears": 6.6
+      },
+      "environmentalImpact": {
+        "annualCo2OffsetKg": 11662,
+        "treesEquivalent": 555
+      },
+      "generatedAt": "2026-07-31T15:44:33.777Z"
+    },
+    {
+      "id": "sq-1785512996245-xmmz",
+      "createdAt": "2026-07-31T15:49:56.245Z",
+      "inputs": {
+        "dailyEnergyKwh": 45,
+        "peakLoadKw": 8,
+        "backupHours": 12,
+        "location": "Lagos"
+      },
+      "systemSizing": {
+        "recommendedInverterKva": 13,
+        "recommendedBatteryKwh": 130.4,
+        "recommendedSolarKwp": 10.2,
+        "panelCount550w": 19
+      },
+      "financialROI": {
+        "totalCapExNGN": 60062000,
+        "formattedTotalCapEx": "₦60,062,000",
+        "annualSavingsNGN": 9135938,
+        "formattedAnnualSavings": "₦9,135,938",
+        "paybackPeriodYears": 6.6
+      },
+      "environmentalImpact": {
+        "annualCo2OffsetKg": 11662,
+        "treesEquivalent": 555
+      },
+      "generatedAt": "2026-07-31T15:49:56.245Z"
     }
   ],
   "telemetryLogs": []

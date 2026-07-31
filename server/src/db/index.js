@@ -154,6 +154,43 @@ class DatabaseEngine {
     return this.data.portfolio.find(p => p.id === id) || null;
   }
 
+  createPortfolioItem(item) {
+    const newItem = {
+      id: `port-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      ...item
+    };
+    this.data.portfolio.unshift(newItem); // Add newest item first
+    this.save();
+    return newItem;
+  }
+
+  updatePortfolioItem(id, updates) {
+    const index = this.data.portfolio.findIndex(p => p.id === id);
+    if (index !== -1) {
+      this.data.portfolio[index] = {
+        ...this.data.portfolio[index],
+        ...updates,
+        id: this.data.portfolio[index].id, // Prevent ID overwrite
+        updatedAt: new Date().toISOString()
+      };
+      this.save();
+      return this.data.portfolio[index];
+    }
+    return null;
+  }
+
+  deletePortfolioItem(id) {
+    const index = this.data.portfolio.findIndex(p => p.id === id);
+    if (index !== -1) {
+      const removed = this.data.portfolio.splice(index, 1)[0];
+      this.save();
+      return removed;
+    }
+    return null;
+  }
+
   // Inquiries
   createInquiry(inquiry) {
     const newInquiry = {

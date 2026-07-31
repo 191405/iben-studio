@@ -12,7 +12,10 @@ const {
   getInquiries,
   getInquiryById,
   updateInquiryStatus,
-  getAdminStats
+  getAdminStats,
+  createPortfolioItem,
+  updatePortfolioItem,
+  deletePortfolioItem
 } = require('./admin.controller');
 
 // @route   POST /api/v1/admin/login
@@ -39,5 +42,20 @@ router.put('/inquiries/:id/status', requireAdmin, updateInquiryStatus);
 // @desc    Executive KPI summary and system telemetry stats
 // @access  Private (Admin only - requires Bearer token)
 router.get('/stats', requireAdmin, getAdminStats);
+
+// @route   POST /api/v1/admin/portfolio
+// @desc    Create new portfolio case study
+// @access  Private (Admin only - requires Bearer token)
+router.post('/portfolio', requireAdmin, createPortfolioItem);
+
+// @route   PUT /api/v1/admin/portfolio/:id
+// @desc    Update portfolio case study
+// @access  Private (Admin only - requires Bearer token)
+router.put('/portfolio/:id', requireAdmin, updatePortfolioItem);
+
+// @route   DELETE /api/v1/admin/portfolio/:id
+// @desc    Delete portfolio case study
+// @access  Private (Admin only - requires Bearer token)
+router.delete('/portfolio/:id', requireAdmin, deletePortfolioItem);
 
 module.exports = router;

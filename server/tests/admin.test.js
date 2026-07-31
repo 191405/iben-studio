@@ -100,4 +100,48 @@ describe('Enterprise Admin API (/api/v1/admin)', () => {
     expect(res.body.system.service).toBe('IBEN Studio Enterprise API');
     expect(res.body.metrics.totalInquiries).toBeGreaterThan(0);
   });
+
+  let createdPortfolioId = '';
+  test('POST /api/v1/admin/portfolio — should create new case study with valid JWT', async () => {
+    const res = await request(app)
+      .post('/api/v1/admin/portfolio')
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({
+        title: 'Enterprise AI Energy Platform',
+        discipline: 'software-applications',
+        client: 'Apex Industrial Energy',
+        year: 2026,
+        description: 'Real-time telemetry and energy forecasting SaaS platform.',
+        metrics: '99.99% Uptime / 450MW Managed',
+        tags: ['AI/ML', 'BigQuery', 'Solar']
+      });
+
+    expect(res.statusCode).toBe(201);
+    expect(res.body.success).toBe(true);
+    expect(res.body.data.title).toBe('Enterprise AI Energy Platform');
+    expect(res.body.data.id).toBeDefined();
+    createdPortfolioId = res.body.data.id;
+  });
+
+  test('PUT /api/v1/admin/portfolio/:id — should update portfolio item', async () => {
+    const res = await request(app)
+      .put(`/api/v1/admin/portfolio/${createdPortfolioId}`)
+      .set('Authorization', `Bearer ${adminToken}`)
+      .send({
+        metrics: '100% Uptime / 500MW Managed'
+      });
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body.success).toBe(true);
+    expect(res.body.data.metrics).toBe('100% Uptime / 500MW Managed');
+  });
+
+  test('DELETE /api/v1/admin/portfolio/:id — should delete portfolio item', async () => {
+    const res = await request(app)
+      .delete(`/api/v1/admin/portfolio/${createdPortfolioId}`)
+      .set('Authorization', `Bearer ${adminToken}`);
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body.success).toBe(true);
+  });
 });

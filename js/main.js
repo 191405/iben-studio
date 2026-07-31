@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Figma-grade interactive micro-animations & responsive parallax
   initFigmaInteractions();
+
+  // Enterprise Admin Portal Modal & CRUD Dashboard
+  initAdminPortal();
 });
 
 /* ===== PAGE LOADER ===== */
@@ -529,5 +532,259 @@ function initFigmaInteractions() {
     }, { passive: true });
   }
 }
+
+/* ==========================================================================
+   4. ENTERPRISE ADMIN PORTAL MODAL & CRUD DASHBOARD
+   ========================================================================== */
+function initAdminPortal() {
+  const btnOpen = document.getElementById('btn-admin-portal');
+  const overlay = document.getElementById('admin-modal-overlay');
+  const btnClose = document.getElementById('admin-modal-close');
+  if (!btnOpen || !overlay) return;
+
+  const getApiUrl = (endpoint) => {
+    const base = window.ibenAPI ? window.ibenAPI.baseURL : 'http://localhost:3000/api/v1';
+    return `${base}${endpoint}`;
+  };
+
+  const renderModalState = () => {
+    const token = localStorage.getItem('iben_admin_jwt');
+    const loginView = document.getElementById('admin-login-view');
+    const dashView = document.getElementById('admin-dashboard-view');
+    if (!loginView || !dashView) return;
+
+    if (token) {
+      loginView.style.display = 'none';
+      dashView.style.display = 'block';
+      loadAdminInquiries(token);
+    } else {
+      loginView.style.display = 'block';
+      dashView.style.display = 'none';
+    }
+  };
+
+  btnOpen.addEventListener('click', () => {
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    renderModalState();
+  });
+
+  if (btnClose) {
+    btnClose.addEventListener('click', () => {
+      overlay.classList.remove('active');
+      overlay.setAttribute('aria-hidden', 'true');
+    });
+  }
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.classList.remove('active');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+  });
+
+  // Admin Login
+  const loginForm = document.getElementById('admin-login-form');
+  const loginBtn = document.getElementById('admin-login-btn');
+  const loginError = document.getElementById('admin-login-error');
+
+  if (loginBtn && loginForm) {
+    loginBtn.addEventListener('click', async () => {
+      const email = document.getElementById('admin-email').value;
+      const password = document.getElementById('admin-password').value;
+      if (loginError) loginError.style.display = 'none';
+
+      try {
+        const res = await fetch(getApiUrl('/admin/login'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const json = await res.json();
+        if (json.success && json.token) {
+          localStorage.setItem('iben_admin_jwt', json.token);
+          renderModalState();
+        } else {
+          if (loginError) {
+            loginError.textContent = json.error ? json.error.message : 'Authentication failed.';
+            loginError.style.display = 'block';
+          }
+        }
+      } catch (err) {
+        if (loginError) {
+          loginError.textContent = 'Network error connecting to backend API.';
+          loginError.style.display = 'block';
+        }
+      }
+    });
+  }
+
+  // Admin Logout
+  const logoutBtn = document.getElementById('admin-logout-btn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('iben_admin_jwt');
+      renderModalState();
+    });
+  }
+
+  // Tab switching
+  const tabCreate = document.getElementById('tab-btn-create');
+  const tabInquiries = document.getElementById('tab-btn-inquiries');
+  const panelCreate = document.getElementById('tab-panel-create');
+  const panelInquiries = document.getElementById('tab-panel-inquiries');
+
+  if (tabCreate && tabInquiries) {
+    tabCreate.addEventListener('click', () => {
+      tabCreate.classList.add('active');
+      tabInquiries.classList.remove('active');
+      panelCreate.style.display = 'block';
+      panelInquiries.style.display = 'none';
+    });
+    tabInquiries.addEventListener('click', () => {
+      tabInquiries.classList.add('active');
+      tabCreate.classList.remove('active');
+      panelInquiries.style.display = 'block';
+      panelCreate.style.display = 'none';
+      loadAdminInquiries(localStorage.getItem('iben_admin_jwt'));
+    });
+  }
+
+  // Create Case Study Handler
+  const portSubmit = document.getElementById('admin-port-submit');
+  const portMsg = document.getElementById('admin-port-msg');
+  if (portSubmit) {
+    portSubmit.addEventListener('click', async () => {
+      const title = document.getElementById('admin-port-title').value;
+      const discipline = document.getElementById('admin-port-discipline').value;
+      const client = document.getElementById('admin-port-client').value;
+      const year = document.getElementById('admin-port-year').value;
+      const metrics = document.getElementById('admin-port-metrics').value;
+      const description = document.getElementById('admin-port-desc').value;
+      const tags = document.getElementById('admin-port-tags').value;
+
+      if (!title || !discipline) {
+        if (portMsg) {
+          portMsg.style.color = '#ff6b6b';
+          portMsg.textContent = 'Please provide at least a title and discipline.';
+          portMsg.style.display = 'block';
+        }
+        return;
+      }
+
+      const token = localStorage.getItem('iben_admin_jwt');
+      try {
+        const res = await fetch(getApiUrl('/admin/portfolio'), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ title, discipline, client, year, metrics, description, tags })
+        });
+        const json = await res.json();
+        if (json.success) {
+          if (portMsg) {
+            portMsg.style.color = '#00FF88';
+            portMsg.textContent = '✅ Case study published successfully!';
+            portMsg.style.display = 'block';
+          }
+          document.getElementById('admin-portfolio-form').reset();
+          // Instantly refresh frontend portfolio gallery on the live site!
+          if (typeof initPortfolioGallery === 'function') {
+            initPortfolioGallery();
+          }
+        } else {
+          if (portMsg) {
+            portMsg.style.color = '#ff6b6b';
+            portMsg.textContent = json.error ? json.error.message : 'Error creating case study.';
+            portMsg.style.display = 'block';
+          }
+        }
+      } catch (err) {
+        if (portMsg) {
+          portMsg.style.color = '#ff6b6b';
+          portMsg.textContent = 'Network error saving case study.';
+          portMsg.style.display = 'block';
+        }
+      }
+    });
+  }
+
+  // Load Inquiries List
+  const refreshBtn = document.getElementById('admin-inquiries-refresh');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => loadAdminInquiries(localStorage.getItem('iben_admin_jwt')));
+  }
+
+  async function loadAdminInquiries(token) {
+    const container = document.getElementById('admin-inquiries-container');
+    if (!container || !token) return;
+
+    try {
+      const res = await fetch(getApiUrl('/admin/inquiries'), {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      const json = await res.json();
+      if (!json.success || !json.data || json.data.length === 0) {
+        container.innerHTML = '<p style="color:rgba(255,255,255,0.5); font-size:0.85rem;">No commission inquiries found.</p>';
+        return;
+      }
+
+      let html = `
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Client</th>
+              <th>Discipline</th>
+              <th>Message</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      json.data.forEach(item => {
+        html += `
+          <tr>
+            <td><strong>${item.name}</strong><br><span style="color:rgba(255,255,255,0.5); font-size:0.75rem;">${item.email}</span></td>
+            <td><span style="background:rgba(255,255,255,0.08); padding:0.2rem 0.5rem; border-radius:4px; font-size:0.75rem;">${item.discipline}</span></td>
+            <td><span title="${item.message}">${item.message.substring(0, 45)}...</span></td>
+            <td>
+              <select class="admin-status-select" data-id="${item.id}" style="background:#1a1a1a; color:#fff; border:1px solid rgba(255,255,255,0.2); padding:0.25rem; border-radius:4px; font-size:0.75rem;">
+                <option value="pending" ${item.status === 'pending' ? 'selected' : ''}>Pending</option>
+                <option value="in-review" ${item.status === 'in-review' ? 'selected' : ''}>In Review</option>
+                <option value="contacted" ${item.status === 'contacted' ? 'selected' : ''}>Contacted</option>
+                <option value="commissioned" ${item.status === 'commissioned' ? 'selected' : ''}>Commissioned</option>
+              </select>
+            </td>
+          </tr>
+        `;
+      });
+
+      html += '</tbody></table>';
+      container.innerHTML = html;
+
+      // Bind status dropdown changes
+      container.querySelectorAll('.admin-status-select').forEach(select => {
+        select.addEventListener('change', async (e) => {
+          const id = e.target.getAttribute('data-id');
+          const status = e.target.value;
+          await fetch(getApiUrl(`/admin/inquiries/${id}/status`), {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ status })
+          });
+        });
+      });
+    } catch (err) {
+      container.innerHTML = '<p style="color:#ff6b6b; font-size:0.85rem;">Error loading inquiries.</p>';
+    }
+  }
+}
+
 
 
