@@ -1,21 +1,33 @@
+# ==============================================================================
+# RENDER.COM DEPLOYMENT BLUEPRINT (render.yaml)
+# ==============================================================================
+# This Blueprint automatically deploys the IBEN Studio Enterprise Node/Express
+# Backend API as a fully managed Web Service on Render.
+#
+# To deploy on Render:
+# 1. Go to https://dashboard.render.com -> New -> Blueprints
+# 2. Connect repository: https://github.com/191405/iben-studio
+# 3. Click "Apply" -> Your API will deploy live at https://iben-studio-api.onrender.com
+# ==============================================================================
+
 services:
   - type: web
     name: iben-studio-api
     env: node
+    region: frankfurt # Low latency global routing
+    plan: free
     rootDir: server
     buildCommand: npm install
     startCommand: npm start
-    healthCheckPath: /api/v1/health
+    autoDeploy: true
     envVars:
-      - key: NODE_ENV
-        value: production
       - key: PORT
         value: 10000
+      - key: NODE_ENV
+        value: production
       - key: ALLOWED_ORIGINS
         value: "*"
-      - key: API_PREFIX
-        value: /api/v1
-    disk:
-      name: iben-studio-data
-      mountPath: /opt/render/project/src/server/data
-      sizeGB: 1
+      - key: JWT_SECRET
+        value: iben_super_secret_jwt_key_2026_enterprise_production
+      - key: WEBHOOK_URL
+        value: ""

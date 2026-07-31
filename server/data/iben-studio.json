@@ -1,6 +1,31 @@
 {
   "inquiries": [
     {
+      "id": "inq-1785524001688-55cm",
+      "status": "in-review",
+      "createdAt": "2026-07-31T18:53:21.688Z",
+      "name": "Chief Emeka Okafor",
+      "email": "emeka.okafor@solar-test.ng",
+      "discipline": "solar-engineering",
+      "message": "Looking for a 15kVA commercial hybrid inverter and LiFePO4 battery setup.",
+      "phone": "+2348030009999",
+      "company": null,
+      "source": "IBEN Studio Website",
+      "updatedAt": "2026-07-31T18:53:21.882Z"
+    },
+    {
+      "id": "inq-1785519241626-8hch",
+      "status": "pending",
+      "createdAt": "2026-07-31T17:34:01.626Z",
+      "name": "Chinedu Okafor",
+      "email": "chinedu@apextech.ng",
+      "discipline": "solar-engineering",
+      "message": "We require a 200kWp rooftop solar array for our industrial plant in Ikeja.",
+      "phone": null,
+      "company": null,
+      "source": "IBEN Studio Website"
+    },
+    {
       "id": "inq-1785519240527-b9bg",
       "status": "in-review",
       "createdAt": "2026-07-31T17:34:00.527Z",
@@ -150,9 +175,9 @@
       "source": "IBEN Studio Website"
     },
     {
-      "id": "inq-1785519241626-8hch",
+      "id": "inq-1785524002575-wlsb",
       "status": "pending",
-      "createdAt": "2026-07-31T17:34:01.626Z",
+      "createdAt": "2026-07-31T18:53:22.575Z",
       "name": "Chinedu Okafor",
       "email": "chinedu@apextech.ng",
       "discipline": "solar-engineering",
@@ -426,6 +451,34 @@
         "treesEquivalent": 555
       },
       "generatedAt": "2026-07-31T17:34:02.016Z"
+    },
+    {
+      "id": "sq-1785524002987-978o",
+      "createdAt": "2026-07-31T18:53:22.987Z",
+      "inputs": {
+        "dailyEnergyKwh": 45,
+        "peakLoadKw": 8,
+        "backupHours": 12,
+        "location": "Lagos"
+      },
+      "systemSizing": {
+        "recommendedInverterKva": 13,
+        "recommendedBatteryKwh": 130.4,
+        "recommendedSolarKwp": 10.2,
+        "panelCount550w": 19
+      },
+      "financialROI": {
+        "totalCapExNGN": 60062000,
+        "formattedTotalCapEx": "₦60,062,000",
+        "annualSavingsNGN": 9135938,
+        "formattedAnnualSavings": "₦9,135,938",
+        "paybackPeriodYears": 6.6
+      },
+      "environmentalImpact": {
+        "annualCo2OffsetKg": 11662,
+        "treesEquivalent": 555
+      },
+      "generatedAt": "2026-07-31T18:53:22.987Z"
     }
   ],
   "telemetryLogs": []
