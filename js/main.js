@@ -343,7 +343,12 @@ function renderPortfolioCards(category) {
 
   gallery.innerHTML = filtered.map((item, idx) => `
     <div class="portfolio-item reveal loaded" data-id="${item.id}" data-cat="${item.category}" style="cursor: pointer;">
-      <img src="${item.imageUrl}" alt="${item.title}" loading="lazy" onerror="this.src='assets/images/portfolio-editorial.png'">
+      ${String(item.id).startsWith('port-000') || String(item.title).includes('Processing...')
+        ? `<div style="display:flex; align-items:center; justify-content:center; height: 240px; background: var(--color-bg-alt); border: 1px dashed var(--color-border);">
+             <span class="processing-text">Processing... — Case Studies Coming Soon</span>
+           </div>`
+        : `<img src="${item.imageUrl}" alt="${item.title}" loading="lazy" onerror="this.src='assets/images/portfolio-editorial.png'">`
+      }
       <div class="portfolio-item-overlay">
         <div class="portfolio-item-title">${item.title}</div>
         <div class="portfolio-item-cat">${item.discipline}</div>
