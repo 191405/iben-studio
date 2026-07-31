@@ -171,6 +171,21 @@ class DatabaseEngine {
     return this.data.inquiries;
   }
 
+  getInquiryById(id) {
+    return this.data.inquiries.find(i => i.id === id) || null;
+  }
+
+  updateInquiryStatus(id, status) {
+    const inquiry = this.data.inquiries.find(i => i.id === id);
+    if (inquiry) {
+      inquiry.status = status;
+      inquiry.updatedAt = new Date().toISOString();
+      this.save();
+      return inquiry;
+    }
+    return null;
+  }
+
   // Beadwork Catalog
   getBeadworkCatalog() {
     return this.data.beadworkCatalog;

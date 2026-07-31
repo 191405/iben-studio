@@ -17,6 +17,7 @@ const solarRoutes = require('./modules/solar/solar.routes');
 const inquiriesRoutes = require('./modules/inquiries/inquiries.routes');
 const portfolioRoutes = require('./modules/portfolio/portfolio.routes');
 const beadworkRoutes = require('./modules/beadwork/beadwork.routes');
+const adminRoutes = require('./modules/admin/admin.routes');
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use(`${apiPrefix}/solar`, solarRoutes);        // /api/v1/solar/calculate
 app.use(`${apiPrefix}/inquiries`, inquiriesRoutes);// /api/v1/inquiries
 app.use(`${apiPrefix}/portfolio`, portfolioRoutes);// /api/v1/portfolio
 app.use(`${apiPrefix}/beadwork`, beadworkRoutes);  // /api/v1/beadwork/catalog & quote
+app.use(`${apiPrefix}/admin`, adminRoutes);        // /api/v1/admin (login, inquiries, stats)
 
 // Serve static frontend files from project root
 const staticPath = process.env.PUBLIC_DIR || path.join(__dirname, '..', '..');

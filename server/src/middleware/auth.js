@@ -28,4 +28,16 @@ function requireAuth(req, res, next) {
   }
 }
 
-module.exports = { requireAuth };
+function requireAdmin(req, res, next) {
+  requireAuth(req, res, () => {
+    if (req.user && (req.user.role === 'admin' || req.user.isAdmin === true)) {
+      return next();
+    }
+    return res.status(403).json({
+      success: false,
+      error: { code: 403, message: 'Access denied. Enterprise Admin credentials required.' }
+    });
+  });
+}
+
+module.exports = { requireAuth, requireAdmin };
