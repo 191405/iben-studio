@@ -240,6 +240,16 @@ function initSolarCalculator() {
     valKw.textContent = `${peakKw} kW`;
     valHours.textContent = `${backupHours} Hours`;
 
+    if (dailyKwh === 0 && peakKw === 0 && backupHours === 0) {
+      if (outKva) outKva.textContent = '0 kVA';
+      if (outBattery) outBattery.textContent = '0 kWh';
+      if (outSolar) outSolar.textContent = '0 kWp';
+      if (outPanels) outPanels.textContent = '0 Panels';
+      if (outCapex) outCapex.textContent = '₦0';
+      if (outPayback) outPayback.textContent = 'Est. Payback: Awaiting Input';
+      return;
+    }
+
     try {
       // Use Live API calculation or fallback to client SDK local math
       const res = await window.ibenAPI.calculateSolar({ dailyKwh, peakKw, backupHours });
