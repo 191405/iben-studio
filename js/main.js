@@ -232,6 +232,8 @@ function initSolarCalculator() {
   const outPanels = document.getElementById('out-panels');
   const outCapex = document.getElementById('out-capex');
   const outPayback = document.getElementById('out-payback');
+  const vizRing = document.getElementById('solar-viz-ring');
+  const vizPercentage = document.getElementById('solar-viz-percentage');
   const btnQuote = document.getElementById('btn-request-quote');
 
   const updateCalculation = async () => {
@@ -250,19 +252,46 @@ function initSolarCalculator() {
       if (outPanels) outPanels.textContent = '0 Panels';
       if (outCapex) outCapex.textContent = '₦0';
       if (outPayback) outPayback.textContent = 'Est. Payback: Awaiting Input';
+      if (vizRing) vizRing.style.strokeDashoffset = 314;
+      if (vizPercentage) vizPercentage.textContent = '0%';
       return;
     }
 
     try {
       // Use Live API calculation or fallback to client SDK local math
-      const res = await window.ibenAPI.calculateSolar({ dailyKwh, peakKw, backupHours });
-      if (res && res.inverterKva) {
-        outKva.textContent = `${res.inverterKva} kVA`;
-        outBattery.textContent = `${res.batteryKwh} kWh`;
-        outSolar.textContent = `${res.solarKwp} kWp`;
-        outPanels.textContent = `${res.panelCount550W} Panels`;
-        outCapex.textContent = `₦${Number(res.estimatedCapexNGN).toLocaleString()}`;
-        outPayback.textContent = `Est. Payback: ${res.paybackYears} Years vs Diesel Generation`;
+      const res = await window.ibenAPI.calculateSolar({ 
+        dailyEnergyKwh: dailyKwh, 
+        peakLoadKw: peakKw, 
+        backupHours 
+      });
+      
+      if (res && res.success && res.data) {
+        const { systemSizing, financialROI, quoteId } = res.data;
+        
+        outKva.textContent = `${systemSizing.recommendedInverterKva} kVA`;
+        outBattery.textContent = `${systemSizing.recommendedBatteryKwh} kWh`;
+        outSolar.textContent = `${systemSizing.recommendedSolarKwp} kWp`;
+        outPanels.textContent = `${systemSizing.panelCount550w} Panels`;
+        outCapex.textContent = `₦${Number(financialROI.totalCapExNGN).toLocaleString()}`;
+        outPayback.textContent = `Est. Payback: ${financialROI.paybackPeriodYears} Years vs Diesel Generation`;
+        
+        const quoteElem = document.getElementById('out-quote-id');
+        if (quoteElem) {
+          quoteElem.textContent = quoteId || "GUEST";
+        }
+        
+        // Update Visualization Ring
+        if (vizRing && vizPercentage) {
+          // Calculate a mock "coverage" percentage based on input scale
+          // (Max input is ~250kWh, so let's scale it to 100% for visual effect)
+          const maxKwh = parseFloat(sliderKwh.max) || 250;
+          const percentage = Math.min(Math.round((dailyKwh / maxKwh) * 100), 100);
+          
+          vizPercentage.textContent = `${percentage}%`;
+          // 314 is the circumference of the circle (2 * PI * 50)
+          const offset = 314 - (percentage / 100) * 314;
+          vizRing.style.strokeDashoffset = offset;
+        }
       }
     } catch (e) {
       console.error('Solar Sizing calculation error:', e);

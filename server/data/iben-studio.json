@@ -185,6 +185,18 @@
       "phone": null,
       "company": null,
       "source": "IBEN Studio Website"
+    },
+    {
+      "id": "inq-1785964852216-sewi",
+      "status": "pending",
+      "createdAt": "2026-08-05T21:20:52.216Z",
+      "name": "Test User",
+      "email": "test@example.com",
+      "discipline": "software-applications",
+      "message": "Test message detailing solar sizing inquiry.",
+      "phone": "1234567890",
+      "company": null,
+      "source": "IBEN Studio Website"
     }
   ],
   "portfolio": [

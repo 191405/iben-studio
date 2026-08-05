@@ -69,6 +69,22 @@
   --shadow-lg: 0 8px 30px rgba(26, 26, 26, 0.08);
   --shadow-card-hover: 0 12px 40px rgba(26, 26, 26, 0.1);
 
+  /* Neomorphism */
+  --neo-light: #FFFDF8;
+  --neo-dark: rgba(180, 170, 155, 0.45);
+  --neo-shadow-raised:
+    6px 6px 14px var(--neo-dark),
+    -6px -6px 14px var(--neo-light);
+  --neo-shadow-raised-sm:
+    3px 3px 8px var(--neo-dark),
+    -3px -3px 8px var(--neo-light);
+  --neo-shadow-inset:
+    inset 3px 3px 8px var(--neo-dark),
+    inset -3px -3px 8px var(--neo-light);
+  --neo-shadow-hover:
+    8px 8px 20px var(--neo-dark),
+    -8px -8px 20px var(--neo-light);
+
   /* Layout */
   --max-width: 1200px;
   --gutter: clamp(1.25rem, 3vw, 3rem);
@@ -417,12 +433,14 @@ section {
 .hero-discipline-icon {
   width: 36px;
   height: 36px;
-  border: 1.5px solid var(--color-border);
+  border: none;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  background: var(--color-bg);
+  box-shadow: var(--neo-shadow-raised-sm);
 }
 
 .hero-discipline-icon svg {
@@ -536,6 +554,7 @@ section {
   position: relative;
   overflow: hidden;
   border: 1px solid transparent;
+  box-shadow: var(--neo-shadow-raised);
   transition: all var(--transition-base);
 }
 
@@ -555,7 +574,7 @@ section {
 .discipline-card:hover {
   background: var(--color-bg-card-hover);
   border-color: var(--color-border);
-  box-shadow: var(--shadow-card-hover);
+  box-shadow: var(--neo-shadow-hover);
   transform: translateY(-4px);
 }
 
@@ -621,7 +640,9 @@ section {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid var(--color-border);
+  border: none;
+  background: var(--color-bg-card);
+  box-shadow: var(--neo-shadow-raised-sm);
   transition: all var(--transition-fast);
 }
 
@@ -709,14 +730,15 @@ section {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--color-bg-card);
-  border: 2px solid var(--color-border);
+  background: var(--color-bg-alt);
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   position: relative;
   z-index: 2;
+  box-shadow: var(--neo-shadow-raised);
   transition: all var(--transition-base);
 }
 
@@ -962,7 +984,9 @@ section {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid var(--color-border);
+  border: none;
+  background: var(--color-bg);
+  box-shadow: var(--neo-shadow-raised-sm);
   transition: all var(--transition-fast);
 }
 
@@ -1186,15 +1210,16 @@ body::after {
 
 .solar-input-card, .solar-output-card {
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  border: none;
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
-  box-shadow: var(--shadow-md);
-  transition: box-shadow var(--transition-base);
+  box-shadow: var(--neo-shadow-raised);
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
 }
 
 .solar-input-card:hover, .solar-output-card:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--neo-shadow-hover);
+  transform: translateY(-2px);
 }
 
 .solar-card-title {
@@ -1228,21 +1253,24 @@ body::after {
   width: 100%;
   height: 6px;
   border-radius: var(--radius-full);
-  background: var(--color-border-light);
+  background: var(--color-bg);
   outline: none;
   -webkit-appearance: none;
+  box-shadow: var(--neo-shadow-inset);
 }
 
 .solar-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--color-accent);
   cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast);
+  box-shadow:
+    3px 3px 8px var(--neo-dark),
+    -2px -2px 6px var(--neo-light);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .solar-slider::-webkit-slider-thumb:hover {
@@ -1258,9 +1286,11 @@ body::after {
 
 .solar-metric-box {
   background: var(--color-bg);
-  border: 1px solid var(--color-border-light);
+  border: none;
   border-radius: var(--radius-md);
   padding: var(--space-md);
+  box-shadow: var(--neo-shadow-raised-sm);
+  transition: box-shadow var(--transition-base);
 }
 
 .solar-metric-label {
@@ -1305,21 +1335,28 @@ body::after {
 }
 
 .filter-btn {
-  background: transparent;
-  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border: none;
   border-radius: var(--radius-full);
   padding: 0.5rem 1.25rem;
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   color: var(--color-text);
   cursor: pointer;
+  box-shadow: var(--neo-shadow-raised-sm);
   transition: all var(--transition-fast);
 }
 
-.filter-btn:hover, .filter-btn.active {
+.filter-btn:hover {
+  box-shadow: var(--neo-shadow-hover);
+}
+
+.filter-btn.active {
   background: var(--color-text);
   color: var(--color-bg);
-  border-color: var(--color-text);
+  box-shadow:
+    inset 3px 3px 8px rgba(0, 0, 0, 0.25),
+    inset -3px -3px 8px rgba(60, 60, 60, 0.15);
 }
 
 .portfolio-modal {
@@ -1346,13 +1383,15 @@ body::after {
 
 .modal-card {
   background: var(--color-bg);
-  border: 1px solid var(--color-border);
+  border: none;
   border-radius: var(--radius-lg);
   max-width: 680px;
   width: 90%;
   padding: var(--space-2xl);
   position: relative;
-  box-shadow: var(--shadow-card-hover);
+  box-shadow:
+    12px 12px 30px rgba(180, 170, 155, 0.5),
+    -12px -12px 30px var(--neo-light);
   transform: translateY(20px);
   transition: transform var(--transition-base);
 }
@@ -1408,13 +1447,14 @@ body::after {
 .form-input, .form-select, .form-textarea {
   width: 100%;
   padding: 0.9rem 1.1rem;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border: none;
   border-radius: var(--radius-sm);
   font-family: var(--font-sans);
   font-size: var(--text-base);
   color: var(--color-text);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: var(--neo-shadow-inset);
+  transition: box-shadow var(--transition-fast);
 }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
@@ -1663,17 +1703,17 @@ body::after {
   animation: floatAmbient 4.5s ease-in-out infinite;
 }
 
-/* Luxury Input Field Focus States */
+/* Luxury Input Field Focus States — Neomorphic */
 .form-input, .form-select, .form-textarea {
-  transition: border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.35s ease;
 }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: #DFB76C;
-  box-shadow: 0 0 0 4px rgba(223, 183, 108, 0.18);
-  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow:
+    var(--neo-shadow-inset),
+    0 0 0 3px rgba(223, 183, 108, 0.22);
+  background-color: rgba(255, 253, 248, 0.6);
   outline: none;
 }
 
@@ -1996,3 +2036,41 @@ body::after {
     font-size: 0.7rem;
   }
 }
+
+ / *   C i n e m a t i c   P r e l o a d e r   * / 
+ . p a g e - l o a d e r   { 
+     p o s i t i o n :   f i x e d ; 
+     t o p :   0 ;   l e f t :   0 ;   w i d t h :   1 0 0 v w ;   h e i g h t :   1 0 0 v h ; 
+     b a c k g r o u n d - c o l o r :   v a r ( - - c o l o r - b g ) ; 
+     z - i n d e x :   9 9 9 9 ; 
+     d i s p l a y :   f l e x ; 
+     a l i g n - i t e m s :   c e n t e r ; 
+     j u s t i f y - c o n t e n t :   c e n t e r ; 
+     t r a n s f o r m - o r i g i n :   t o p   c e n t e r ; 
+ } 
+ . l o a d e r - c o n t e n t   { 
+     d i s p l a y :   f l e x ; 
+     f l e x - d i r e c t i o n :   c o l u m n ; 
+     a l i g n - i t e m s :   c e n t e r ; 
+     g a p :   2 r e m ; 
+ } 
+ . l o a d e r - l o g o - w r a p p e r   { 
+     w i d t h :   1 2 0 p x ; 
+     h e i g h t :   1 5 0 p x ; 
+ } 
+ . l o a d e r - l o g o   { 
+     w i d t h :   1 0 0 % ; 
+     h e i g h t :   1 0 0 % ; 
+     c o l o r :   v a r ( - - c o l o r - t e x t ) ; 
+ } 
+ . l o g o - p a t h   { 
+     s t r o k e - d a s h a r r a y :   4 0 0 ; 
+     s t r o k e - d a s h o f f s e t :   4 0 0 ; 
+ } 
+ . l o a d e r - c o u n t e r   { 
+     f o n t - f a m i l y :   v a r ( - - f o n t - m o n o ) ; 
+     f o n t - s i z e :   1 . 5 r e m ; 
+     c o l o r :   v a r ( - - c o l o r - t e x t ) ; 
+ } 
+  
+ 

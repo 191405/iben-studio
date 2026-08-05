@@ -7,7 +7,7 @@
  */
 
 class IBENStudioAPI {
-  constructor(baseURL = window.IBEN_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? '/api/v1' : 'https://iben-studio-api.onrender.com/api/v1')) {
+  constructor(baseURL = window.IBEN_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:3000/api/v1' : 'https://iben-studio-api.onrender.com/api/v1')) {
     this.baseURL = baseURL;
   }
 
